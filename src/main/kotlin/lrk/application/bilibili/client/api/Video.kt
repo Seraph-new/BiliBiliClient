@@ -13,7 +13,7 @@ fun getRecommendVideo(): ArrayList<RecommendVideoInfoObj> {
     val request = if (getCookie("passport.bilibili.com", "SESSDATA") == "") {
         Request.Builder().url(AppConfig.API_GET_RECOMMEND_VIDEOS_URL).get().build()
     } else {
-        makeGetRequestWithCookie(makeGetURL(AppConfig.API_GET_RECOMMEND_VIDEOS_URL, "ps" to "10"))
+        makeGetRequestWithCookie(makeGetURL(AppConfig.API_GET_RECOMMEND_VIDEOS_URL, "ps" to "14", "fresh_type" to "3"))
     }
     val response = Client.getClient().newCall(request).execute()
     if (response.isSuccessful) {

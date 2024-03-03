@@ -34,7 +34,7 @@ import java.lang.Integer.max
 fun VideoInfoBlock(modifier: Modifier = Modifier, videoInfoObj: RecommendVideoInfoObj, id: Int) {
     val navigator = LocalNavigator.currentOrThrow
     var videoPic by remember {
-        mutableStateOf(getEmptyImageBitmap(100, 100))
+        mutableStateOf(getEmptyImageBitmap(250, 200))
     }
     Surface(shape = RoundedCornerShape(15.dp), modifier = modifier.width(320.dp).height(100.dp).clickable {
         logI("VideoInfoBlock was clicked: ${videoInfoObj.title}, ${videoInfoObj.bvid}")

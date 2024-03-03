@@ -22,6 +22,9 @@ dependencies {
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.12")
     implementation("uk.co.caprica:vlcj:4.8.2")
+    implementation("org.freedesktop.gstreamer:gst1-java-core:1.4.0")
+    implementation("net.java.dev.jna:jna:5.14.0")
+    implementation("net.java.dev.jna:jna-platform:5.14.0")
     implementation("cafe.adriel.voyager:voyager-navigator:1.1.0-alpha02")
 }
 
