@@ -7,13 +7,13 @@ import lrk.application.bilibili.client.core.log.logD
 import lrk.application.bilibili.client.core.obj.RecommendVideoInfoObj
 import okhttp3.Request
 
-fun getRecommendVideo(): ArrayList<RecommendVideoInfoObj> {
+fun BilibiliApi.getRecommendVideo(): ArrayList<RecommendVideoInfoObj> {
     val result = ArrayList<RecommendVideoInfoObj>()
     // when there is  no cookie[SESSDATA] for authentication, use default request to get recommend videos
     val request = if (getCookie("passport.bilibili.com", "SESSDATA") == "") {
-        Request.Builder().url(AppConfig.API_GET_RECOMMEND_VIDEOS_URL).get().build()
+        Request.Builder().url(API_GET_RECOMMEND_VIDEOS_URL).get().build()
     } else {
-        makeGetRequestWithCookie(makeGetURL(AppConfig.API_GET_RECOMMEND_VIDEOS_URL, "ps" to "14", "fresh_type" to "3"))
+        makeGetRequestWithCookie(makeGetURL(API_GET_RECOMMEND_VIDEOS_URL, "ps" to "14", "fresh_type" to "3"))
     }
     val response = Client.getClient().newCall(request).execute()
     if (response.isSuccessful) {

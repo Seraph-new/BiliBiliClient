@@ -1,6 +1,7 @@
 package lrk.application.bilibili.client.core
 
-import lrk.application.bilibili.client.api.NavigationUserInfo
+import lrk.application.bilibili.client.api.BilibiliApi
+import lrk.application.bilibili.client.api.getNavigationUserInfo
 import okhttp3.Request
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
@@ -34,7 +35,7 @@ fun makeGetURL(url: String, vararg params: Pair<String, String>): String {
 }
 
 fun makeGetURLWithWbi(url: String, vararg params: Pair<String, Any>): String {
-    val navigationUserInfoObj = NavigationUserInfo.getNavigationUserInfo()!!
+    val navigationUserInfoObj = BilibiliApi.getNavigationUserInfo()!!
     val paramsMap = HashMap<String, Any>()
     params.forEach { (k, v) ->
         paramsMap[k] = v

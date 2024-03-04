@@ -1,6 +1,7 @@
 package lrk.application.bilibili.client.core
 
 import com.google.gson.JsonParser
+import lrk.application.bilibili.client.api.BilibiliApi
 import lrk.application.bilibili.client.api.getVideoURL
 import lrk.application.bilibili.client.core.log.logD
 import java.io.BufferedInputStream
@@ -20,7 +21,7 @@ fun startVideoCachingProcess(bvid: String, cid: Int, qn: Int) {
                                 Client.getClient().newCall(
                                     makeGetRequestWithCookie(
                                         makeGetURLWithWbi(
-                                            AppConfig.API_GET_VIDEO_ADDRESS_URL,
+                                            BilibiliApi.API_GET_VIDEO_ADDRESS_URL,
                                             "bvid" to bvid,
                                             "cid" to cid,
                                             "qn" to qn

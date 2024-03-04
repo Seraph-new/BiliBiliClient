@@ -14,7 +14,7 @@ object Login {
     * status: if -1, request failed; if 1, response body contains error message; if 0, success
      */
     fun requestLoginQRCodeInfo(): Map<String, String> {
-        val request = Request.Builder().url(AppConfig.API_QRCODE_LOGIN_URL).get().build()
+        val request = Request.Builder().url(BilibiliApi.API_QRCODE_LOGIN_URL).get().build()
         val response = client.newCall(request).execute()
         return when (response.isSuccessful) {
             true -> {
@@ -33,7 +33,7 @@ object Login {
     }
 
     fun checkQRCodeScanState(qrcodeKey: String): Map<String, String> {
-        val request = Request.Builder().url(makeGetURL(AppConfig.API_QRCODE_CHECK_URL, "qrcode_key" to qrcodeKey)).get().build()
+        val request = Request.Builder().url(makeGetURL(BilibiliApi.API_QRCODE_CHECK_URL, "qrcode_key" to qrcodeKey)).get().build()
         val response = client.newCall(request).execute()
         return when (response.isSuccessful) {
             true -> {
@@ -66,7 +66,7 @@ object Login {
     }
 
     fun checkIsLogin(): Boolean{
-        val request = makeGetRequestWithCookie(AppConfig.API_USER_INFORMATION_URL)
+        val request = makeGetRequestWithCookie(BilibiliApi.API_USER_INFORMATION_URL)
         val response = client.newCall(request).execute()
         return when (response.isSuccessful) {
             true -> {
@@ -78,7 +78,7 @@ object Login {
     }
 
     fun refreshCookie(): Boolean{
-        val request = makeGetRequestWithCookie(makeGetURL(AppConfig.API_COOKIE_REFRESH_CHECK_URL, "csrf" to getCookie("passport.bilibili.com", "bili_jct")))
+        val request = makeGetRequestWithCookie(makeGetURL(BilibiliApi.API_COOKIE_REFRESH_CHECK_URL, "csrf" to getCookie("passport.bilibili.com", "bili_jct")))
         val response = client.newCall(request).execute()
         return when (response.isSuccessful) {
             true -> {

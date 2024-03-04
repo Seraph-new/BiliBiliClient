@@ -9,10 +9,9 @@ import lrk.application.bilibili.client.core.log.logD
 import lrk.application.bilibili.client.core.makeGetRequestWithCookie
 import lrk.application.bilibili.client.core.obj.NavigationUserInfoObj
 
-object NavigationUserInfo {
-    fun getNavigationUserInfo(): NavigationUserInfoObj? {
+fun BilibiliApi.getNavigationUserInfo(): NavigationUserInfoObj? {
         logD("NavigationUserInfo::getNavigationUserInfo invoked")
-        val request = makeGetRequestWithCookie(AppConfig.API_USER_INFORMATION_URL)
+        val request = makeGetRequestWithCookie(API_USER_INFORMATION_URL)
         val response = Client.getClient().newCall(request).execute()
         return when (response.isSuccessful) {
             true -> {
@@ -28,4 +27,3 @@ object NavigationUserInfo {
             false -> null
         }
     }
-}

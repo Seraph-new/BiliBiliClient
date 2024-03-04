@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import lrk.application.bilibili.client.api.BilibiliApi
 import lrk.application.bilibili.client.api.getRecommendVideo
 import lrk.application.bilibili.client.core.APP_GLOBAL_EVENT_THREAD_POOL
 import lrk.application.bilibili.client.core.APP_GLOBAL_NETWORK_THREAD_POOL
@@ -60,7 +61,7 @@ fun HomePage() {
             while (true) {
                 if (AppState.RecommendVideoPoolState.recommendVideoPoolSize.value < AppState.RecommendVideoPoolState.currentScrollIndex.value + 20) {
                     APP_GLOBAL_NETWORK_THREAD_POOL.execute {
-                        val recommendVideos = getRecommendVideo()
+                        val recommendVideos = BilibiliApi.getRecommendVideo()
                         AppState.RecommendVideoPoolState.recommendVideoPool.addAll(recommendVideos)
                         AppState.RecommendVideoPoolState.recommendVideoPoolSize.value =
                             AppState.RecommendVideoPoolState.recommendVideoPool.size

@@ -15,9 +15,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
-import lrk.application.bilibili.client.api.NavigationUserInfo
-import lrk.application.bilibili.client.api.getBiliBiliNetworkPicture
-import lrk.application.bilibili.client.api.getEmptyImageBitmap
+import lrk.application.bilibili.client.api.*
 import lrk.application.bilibili.client.core.obj.NavigationUserInfoObj
 
 @Composable
@@ -89,7 +87,7 @@ fun UserInfoBlock(width: Dp = 250.dp, height: Dp = 100.dp) {
         }
     }
     LaunchedEffect(Unit) {
-        val userinfo = NavigationUserInfo.getNavigationUserInfo()!!
+        val userinfo = BilibiliApi.getNavigationUserInfo()!!
         getBiliBiliNetworkPicture(userinfo.face)?.let { face = it }
         getBiliBiliNetworkPicture(userinfo.pendant.image)?.let { pendant = it }
         uname = userinfo.uname
