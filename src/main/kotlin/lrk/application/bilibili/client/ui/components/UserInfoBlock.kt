@@ -21,10 +21,10 @@ import lrk.application.bilibili.client.core.obj.NavigationUserInfoObj
 @Composable
 fun UserInfoBlock(width: Dp = 250.dp, height: Dp = 100.dp) {
     var face by remember {
-        mutableStateOf(getEmptyImageBitmap(256, 256))
+        mutableStateOf(PictureTools.getEmptyImageBitmap(256, 256))
     }
     var pendant by remember {
-        mutableStateOf(getEmptyImageBitmap(256, 256))
+        mutableStateOf(PictureTools.getEmptyImageBitmap(256, 256))
     }
     var uname by remember {
         mutableStateOf("")
@@ -88,8 +88,8 @@ fun UserInfoBlock(width: Dp = 250.dp, height: Dp = 100.dp) {
     }
     LaunchedEffect(Unit) {
         val userinfo = BilibiliApi.getNavigationUserInfo()!!
-        getBiliBiliNetworkPicture(userinfo.face)?.let { face = it }
-        getBiliBiliNetworkPicture(userinfo.pendant.image)?.let { pendant = it }
+        BilibiliApi.getPicture(userinfo.face)?.let { face = it }
+        BilibiliApi.getPicture(userinfo.pendant.image)?.let { pendant = it }
         uname = userinfo.uname
         answerStatus = if (userinfo.answer_status == 0) "正式会员" else "未答题"
         bcoin_balance = userinfo.wallet.bcoin_balance

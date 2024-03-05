@@ -18,9 +18,10 @@ import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import lrk.application.bilibili.client.api.BilibiliApi
+import lrk.application.bilibili.client.api.PictureTools
 import lrk.application.bilibili.client.api.formatDuration
-import lrk.application.bilibili.client.api.getBiliBiliNetworkPicture
-import lrk.application.bilibili.client.api.getEmptyImageBitmap
+import lrk.application.bilibili.client.api.getPicture
 import lrk.application.bilibili.client.core.APP_GLOBAL_NETWORK_THREAD_POOL
 import lrk.application.bilibili.client.core.AppConfig
 import lrk.application.bilibili.client.core.AppState
@@ -34,7 +35,7 @@ import java.lang.Integer.max
 fun VideoInfoBlock(modifier: Modifier = Modifier, videoInfoObj: RecommendVideoInfoObj, id: Int) {
     val navigator = LocalNavigator.currentOrThrow
     var videoPic by remember {
-        mutableStateOf(getEmptyImageBitmap(250, 200))
+        mutableStateOf(PictureTools.getEmptyImageBitmap(250, 200))
     }
     Surface(shape = RoundedCornerShape(15.dp), modifier = modifier.width(320.dp).height(100.dp).clickable {
         logI("VideoInfoBlock was clicked: ${videoInfoObj.title}, ${videoInfoObj.bvid}")
@@ -100,7 +101,7 @@ fun VideoInfoBlock(modifier: Modifier = Modifier, videoInfoObj: RecommendVideoIn
         AppState.RecommendVideoPoolState.currentScrollIndex.value =
             max(id, AppState.RecommendVideoPoolState.currentScrollIndex.value)
         APP_GLOBAL_NETWORK_THREAD_POOL.execute {
-            videoPic = getBiliBiliNetworkPicture(videoInfoObj.pic, 250, 200)!!
+            videoPic = BilibiliApi.getPicture(videoInfoObj.pic, 250, 200)!!
         }
     }
 }

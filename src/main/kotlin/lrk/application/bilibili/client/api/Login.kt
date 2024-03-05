@@ -2,7 +2,6 @@ package lrk.application.bilibili.client.api
 
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
-import lrk.application.bilibili.client.core.AppConfig
 import lrk.application.bilibili.client.core.*
 import okhttp3.Request
 

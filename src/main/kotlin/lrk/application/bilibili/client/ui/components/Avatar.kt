@@ -12,11 +12,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import lrk.application.bilibili.client.api.getMergedAvatar
+import lrk.application.bilibili.client.api.PictureTools
 
 @Composable
 fun Avatar(face: ImageBitmap, pendant: ImageBitmap, width: Dp = 64.dp, height: Dp = 64.dp) {
     Box(modifier = Modifier.width(width).height(height).clip(RoundedCornerShape((width + height) / 4.dp))) {
-        Image(modifier = Modifier.fillMaxSize(), bitmap = getMergedAvatar(face, pendant, pendant.height), contentDescription = null)
+        Image(modifier = Modifier.fillMaxSize(), bitmap = PictureTools.getMergedAvatar(face, pendant, pendant.height), contentDescription = null)
     }
 }
