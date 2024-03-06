@@ -29,7 +29,7 @@ object PictureTools{
         return ImageBitmap(width, height, ImageBitmapConfig.Argb8888, true, ColorSpaces.Srgb)
     }
 
-    fun getScaledImageBitmap(source: ImageBitmap, scale: Float): ImageBitmap {
+    private fun getScaledImageBitmap(source: ImageBitmap, scale: Float): ImageBitmap {
         val sourceBufferedImage = getCircleImage(source.toAwtImage())
         val resultBufferedImage = BufferedImage(
             (sourceBufferedImage.width * scale).toInt(),
@@ -45,7 +45,7 @@ object PictureTools{
         return resultBufferedImage.toBitmap().asComposeImageBitmap()
     }
 
-    fun getCircleImage(rawImage: BufferedImage): BufferedImage {
+    private fun getCircleImage(rawImage: BufferedImage): BufferedImage {
         val width = rawImage.width
         val image = BufferedImage(width, width, BufferedImage.TYPE_INT_ARGB)
         val g = image.graphics as Graphics2D

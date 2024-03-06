@@ -12,8 +12,7 @@ fun startVideoCachingProcess(bvid: String, cid: Int, qn: Int) {
     cleanVideoCache()
     APP_GLOBAL_VIDEO_CACHING_PROCESS_THREAD_POOL.execute {
         AppState.VideoProcessState.CURRENT_VIDEO_CACHING_PROCESS_THREAD = Thread.currentThread()
-        val sourceStream = BufferedInputStream(
-            Client.getClient()
+        val response = Client.getClient()
                 .newCall(
                     makeGetRequestWithCookie(
                         getVideoURL(
@@ -31,9 +30,9 @@ fun startVideoCachingProcess(bvid: String, cid: Int, qn: Int) {
                             ).asJsonObject.get("data").asJsonObject
                         )
                     )
-                )
-                .execute().body.byteStream()
-        )
+                ).execute()
+        val sourceStream = response.body.byteStream()
+
 
         AppState.VideoProcessState.CURRENT_SOURCE_STREAM = sourceStream
         AppState.VideoProcessState.SERVER_PREPARED = true
@@ -58,6 +57,7 @@ fun startVideoCachingProcess(bvid: String, cid: Int, qn: Int) {
 
         targetStream.close()
         sourceStream.close()
+        response.close()
 
         logD("Video Caching Process End")
     }

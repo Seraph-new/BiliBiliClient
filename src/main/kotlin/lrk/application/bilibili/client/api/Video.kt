@@ -27,6 +27,7 @@ fun BilibiliApi.getRecommendVideo(): ArrayList<RecommendVideoInfoObj> {
             }
         }
     }
+    response.close()
     return result
 }
 
