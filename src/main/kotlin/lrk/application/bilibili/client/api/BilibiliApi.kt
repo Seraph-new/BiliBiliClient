@@ -22,4 +22,7 @@ object BilibiliApi {
 
     // the api for search
     const val API_SEARCH = "https://api.bilibili.com/x/web-interface/wbi/search/all/v2"
+
+    // 大会员积分签到
+    const val API_VIP_SIGN = "https://api.bilibili.com/pgc/activity/score/task/sign"
 }

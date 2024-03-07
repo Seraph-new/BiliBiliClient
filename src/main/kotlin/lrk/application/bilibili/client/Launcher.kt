@@ -22,7 +22,9 @@ import androidx.compose.ui.window.WindowPosition
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
 import com.example.compose.AppTheme
+import lrk.application.bilibili.client.api.BilibiliApi
 import lrk.application.bilibili.client.api.Login
+import lrk.application.bilibili.client.api.vipSignIn
 import lrk.application.bilibili.client.core.*
 import lrk.application.bilibili.client.core.Initialize
 import lrk.application.bilibili.client.ui.components.pages.LoginPage
@@ -39,6 +41,7 @@ fun App() {
 
 fun main() {
     Initialize.initialize()
+    println(BilibiliApi.vipSignIn())
     application {
         val loginStatus = remember { mutableStateOf(Login.checkIsLogin()) }
         var showLoginWindow by remember { mutableStateOf(!Login.checkIsLogin()) }
