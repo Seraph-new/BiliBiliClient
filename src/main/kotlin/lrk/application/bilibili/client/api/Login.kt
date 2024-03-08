@@ -96,7 +96,6 @@ object Login {
                     val timestamp = responseJsonObject.get("data").asJsonObject.get("timestamp").asLong
                     if (refresh){
                         val refreshResponse = client.newCall(makeGetRequestWithCookie("https://www.bilibili.com/correspond/1/" + Algorithm.correspondPath(timestamp))).execute()
-                        println(refreshResponse.body)
 //                         TODO("need localStorage")
                     }
                     true

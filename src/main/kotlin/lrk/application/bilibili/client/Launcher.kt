@@ -41,7 +41,7 @@ fun App() {
 
 fun main() {
     Initialize.initialize()
-    println(BilibiliApi.vipSignIn())
+    println("大会员登陆: ${BilibiliApi.vipSignIn()}")
     application {
         val loginStatus = remember { mutableStateOf(Login.checkIsLogin()) }
         var showLoginWindow by remember { mutableStateOf(!Login.checkIsLogin()) }
