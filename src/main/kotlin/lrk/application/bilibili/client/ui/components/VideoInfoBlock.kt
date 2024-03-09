@@ -43,7 +43,7 @@ fun VideoInfoBlock(modifier: Modifier = Modifier, videoInfoObj: RecommendVideoIn
         navigator.push(
             VideoPlayerScreen(
                 AppConfig.APP_VIDEO_MRL,
-                videoInfoObj.title
+                videoInfoObj
             )
         )
     }) {

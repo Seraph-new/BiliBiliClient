@@ -4,7 +4,6 @@ import com.google.gson.JsonParser
 import lrk.application.bilibili.client.api.BilibiliApi
 import lrk.application.bilibili.client.api.getVideoURL
 import lrk.application.bilibili.client.core.log.logD
-import java.io.BufferedInputStream
 import java.io.FileOutputStream
 
 
@@ -36,7 +35,12 @@ fun startVideoCachingProcess(bvid: String, cid: Int, qn: Int) {
 
         AppState.VideoProcessState.CURRENT_SOURCE_STREAM = sourceStream
         AppState.VideoProcessState.SERVER_PREPARED = true
-        if (!AppConfig.APP_VIDEO_CACHE_FILE.exists()) AppConfig.APP_VIDEO_CACHE_FILE.createNewFile()
+        if (!AppConfig.APP_VIDEO_CACHE_FILE.exists()) {
+            AppConfig.APP_VIDEO_CACHE_FILE.createNewFile()
+        }else{
+            AppConfig.APP_VIDEO_CACHE_FILE.delete()
+            AppConfig.APP_VIDEO_CACHE_FILE.createNewFile()
+        }
         val targetStream = FileOutputStream(AppConfig.APP_VIDEO_CACHE_FILE)
         val buffer = ByteArray(1024)
 

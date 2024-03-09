@@ -16,20 +16,21 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import com.example.compose.AppTheme
 import kotlinx.coroutines.delay
 import lrk.application.bilibili.client.core.AppState
+import lrk.application.bilibili.client.core.obj.RecommendVideoInfoObj
 import lrk.application.bilibili.client.ui.components.VideoPlayerPageTopBar
 import lrk.application.bilibili.client.ui.components.videoplayer.VideoPlayer
 import lrk.application.bilibili.client.ui.components.videoplayer.rememberVideoPlayerState
 import uk.co.caprica.vlcj.player.embedded.EmbeddedMediaPlayer
 
 @Composable
-fun VideoPlayerPage(url: String, title: String) {
+fun VideoPlayerPage(url: String, videoInfoObj: RecommendVideoInfoObj) {
     val fullScreen = remember {
         mutableStateOf(false)
     }
     val navigator = LocalNavigator.current
     AppTheme {
         Scaffold(topBar = {
-            if (!fullScreen.value) VideoPlayerPageTopBar(navigator = navigator, title = title)
+            if (!fullScreen.value) VideoPlayerPageTopBar(navigator = navigator, title = videoInfoObj.title)
         }) {
             BoxWithConstraints {
                 Row(
