@@ -11,6 +11,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import com.example.compose.AppTheme
+import lrk.application.bilibili.client.Platform.Companion.platformScaled
 import lrk.application.bilibili.client.api.Login
 import lrk.application.bilibili.client.core.AppState
 import lrk.application.bilibili.client.ui.components.QRCodeWaitForScan
@@ -49,9 +50,9 @@ fun LoginPage(loginStatus: MutableState<Boolean>) {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center,
             ) {
-                Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = Modifier.height(10.dp.platformScaled()))
                 Text(text = "Login", fontWeight = FontWeight.Bold, fontSize = TextUnit(20f, TextUnitType.Sp))
-                Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = Modifier.height(10.dp.platformScaled()))
                 QRCodeWaitForScan(url, text, 200)
             }
             LaunchedEffect(Unit) {

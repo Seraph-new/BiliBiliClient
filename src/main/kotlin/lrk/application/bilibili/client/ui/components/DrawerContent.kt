@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import lrk.application.bilibili.client.Platform.Companion.platformScaled
 
 @Composable
 fun DrawerContent() {
@@ -18,7 +19,7 @@ fun DrawerContent() {
                 horizontalArrangement = Arrangement.Start
             ) {
                 // User Info Page
-                Surface(modifier = Modifier.fillMaxHeight().width(userInfoColumnWidth)) {
+                Surface(modifier = Modifier.fillMaxHeight().width(userInfoColumnWidth.platformScaled())) {
                     Column(
                         horizontalAlignment = Alignment.Start,
                         verticalArrangement = Arrangement.Top,

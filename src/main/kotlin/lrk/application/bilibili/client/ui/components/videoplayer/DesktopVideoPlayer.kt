@@ -7,8 +7,8 @@ import androidx.compose.ui.graphics.Color
 import com.sun.jna.NativeLibrary
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
+import lrk.application.bilibili.client.Platform
 import lrk.application.bilibili.client.core.AppState
-import lrk.application.bilibili.client.getPlatformDataDir
 import uk.co.caprica.vlcj.binding.support.runtime.RuntimeUtil
 import uk.co.caprica.vlcj.factory.discovery.NativeDiscovery
 import uk.co.caprica.vlcj.player.base.MediaPlayer
@@ -94,7 +94,7 @@ private fun initializeMediaPlayerComponent(): Component {
     NativeDiscovery().discover()
     NativeLibrary.addSearchPath(
         RuntimeUtil.getLibVlcLibraryName(),
-        File(getPlatformDataDir().absolutePath + File.separator + "libvlc").absolutePath
+        File(Platform.getPlatformDataDir().absolutePath + File.separator + "libvlc").absolutePath
     )
     return if (isMacOS()) {
         CallbackMediaPlayerComponent()

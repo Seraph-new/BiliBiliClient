@@ -32,7 +32,6 @@ fun startVideoCachingProcess(bvid: String, cid: Int, qn: Int) {
                 ).execute()
         val sourceStream = response.body.byteStream()
 
-
         AppState.VideoProcessState.CURRENT_SOURCE_STREAM = sourceStream
         AppState.VideoProcessState.SERVER_PREPARED = true
         if (!AppConfig.APP_VIDEO_CACHE_FILE.exists()) {

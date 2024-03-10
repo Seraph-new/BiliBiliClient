@@ -3,8 +3,6 @@ package lrk.application.bilibili.client.core
 import com.google.gson.Gson
 import lrk.application.bilibili.client.Platform
 import lrk.application.bilibili.client.core.log.logI
-import lrk.application.bilibili.client.getPlatform
-import lrk.application.bilibili.client.getPlatformDataDir
 import java.awt.Dimension
 import java.awt.GridLayout
 import java.awt.Toolkit
@@ -21,7 +19,7 @@ object Initialize {
         "https://gstreamer.freedesktop.org/data/pkg/windows/1.22.10/msvc/gstreamer-1.0-msvc-x86_64-1.22.10.msi"
 
     fun initialize() {
-        if (getPlatform() == Platform.Windows) {
+        if (Platform.getPlatform() == Platform.Windows) {
 //            deployVLCOnWindows()
             deployGStreamerOnWindows()
         }
@@ -40,9 +38,9 @@ object Initialize {
     }
 
     private fun deployGStreamerOnWindows() {
-        val targetDir = File(getPlatformDataDir().path + File.separator + "gstreamer")
+        val targetDir = File(Platform.getPlatformDataDir().path + File.separator + "gstreamer")
         if (targetDir.exists() && targetDir.isDirectory && (targetDir.listFiles()?.size ?: 0) != 0) return
-        if (getPlatform() == Platform.Windows) {
+        if (Platform.getPlatform() == Platform.Windows) {
             val jFrame = JFrame("Install GStreamer")
             val jLabel = JLabel("需要安装Gstreamer以提供视频播放功能")
             jLabel.horizontalAlignment = SwingConstants.CENTER
@@ -55,7 +53,7 @@ object Initialize {
                                 jPanel.isVisible = false
                                 jFrame.defaultCloseOperation = JFrame.DISPOSE_ON_CLOSE
                                 val msiLocation =
-                                    File(getPlatformDataDir().path + File.separator + "gstreamer-1.0-msvc-x86_64-1.22.10.msi")
+                                    File(Platform.getPlatformDataDir().path + File.separator + "gstreamer-1.0-msvc-x86_64-1.22.10.msi")
                                 FileOutputStream(msiLocation).use { fileOutputStream ->
                                     fileOutputStream.write(
                                         URI(GSTREAMER_DOWNLOAD_URL).toURL().openStream().readAllBytes()
@@ -72,7 +70,7 @@ object Initialize {
                                         ),
                                         arrayOf(),
                                         File(
-                                            getPlatformDataDir().path
+                                            Platform.getPlatformDataDir().path
                                         )
                                     )
                             }
@@ -97,8 +95,8 @@ object Initialize {
     }
 
     private fun deployVLCOnWindows() {
-        if (getPlatform() == Platform.Windows) {
-            val libVlcDir = File(getPlatformDataDir().path + File.separator + "libvlc")
+        if (Platform.getPlatform() == Platform.Windows) {
+            val libVlcDir = File(Platform.getPlatformDataDir().path + File.separator + "libvlc")
             if (libVlcDir.exists() && (libVlcDir.listFiles()?.size ?: 0) != 0) return
             logI("Deploying VLC on Windows")
             if (!libVlcDir.exists() || libVlcDir.isFile) {

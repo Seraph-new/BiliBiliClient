@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
+import lrk.application.bilibili.client.Platform.Companion.platformScaled
 import lrk.application.bilibili.client.api.*
 import lrk.application.bilibili.client.core.obj.NavigationUserInfoObj
 
@@ -42,13 +43,13 @@ fun UserInfoBlock(width: Dp = 250.dp, height: Dp = 100.dp) {
         mutableStateOf("assets/level-images/lv3.png")
     }
 
-    Column(modifier = Modifier.width(width).height(height)) {
+    Column(modifier = Modifier.width(width.platformScaled()).height(height.platformScaled())) {
         Row(
             modifier = Modifier.padding(start = 5.dp, top = 5.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Start
         ) {
-            Avatar(face, pendant, 80.dp, 80.dp)
+            Avatar(face, pendant, 80.dp.platformScaled(), 80.dp.platformScaled())
             Spacer(modifier = Modifier.width(5.dp))
             Column(
                 horizontalAlignment = Alignment.Start,

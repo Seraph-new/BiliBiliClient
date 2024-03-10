@@ -22,10 +22,11 @@ import androidx.compose.ui.window.WindowPosition
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
 import com.example.compose.AppTheme
+import lrk.application.bilibili.client.Platform.Companion.platformScaled
 import lrk.application.bilibili.client.api.BilibiliApi
 import lrk.application.bilibili.client.api.Login
 import lrk.application.bilibili.client.api.vipSignIn
-import lrk.application.bilibili.client.core.*
+import lrk.application.bilibili.client.core.AppConfig
 import lrk.application.bilibili.client.core.Initialize
 import lrk.application.bilibili.client.ui.components.pages.LoginPage
 import lrk.application.bilibili.client.ui.components.pages.MainPage
@@ -46,7 +47,7 @@ fun main() {
         val loginStatus = remember { mutableStateOf(Login.checkIsLogin()) }
         var showLoginWindow by remember { mutableStateOf(!Login.checkIsLogin()) }
         val mainWindowState = rememberWindowState().also {
-            it.size = DpSize(1440.dp, 810.dp)
+            it.size = DpSize(1440.dp.platformScaled(), 810.dp.platformScaled())
         }
         if (loginStatus.value) {
             showLoginWindow = false
@@ -62,7 +63,7 @@ fun main() {
         // Login Window
         if (showLoginWindow) {
             val loginWindowState = rememberWindowState()
-            loginWindowState.size = DpSize(200.dp, 300.dp)
+            loginWindowState.size = DpSize(200.dp.platformScaled(), 300.dp.platformScaled())
             loginWindowState.position = WindowPosition(Alignment.Center)
             Window(title = "Login",
                 resizable = false,
@@ -85,7 +86,7 @@ fun main() {
                                     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
                                         // button for close and minimize
                                         TextButton(
-                                            modifier = Modifier.width(20.dp).height(20.dp),
+                                            modifier = Modifier.width(20.dp.platformScaled()).height(20.dp.platformScaled()),
                                             contentPadding = PaddingValues(0.dp),
                                             onClick = {
                                                 loginWindowState.isMinimized = true
@@ -97,7 +98,7 @@ fun main() {
                                             )
                                         }
                                         TextButton(
-                                            modifier = Modifier.width(20.dp).height(20.dp),
+                                            modifier = Modifier.width(20.dp.platformScaled()).height(20.dp.platformScaled()),
                                             contentPadding = PaddingValues(0.dp),
                                             onClick = {
                                                 exitApplication()
@@ -113,7 +114,7 @@ fun main() {
                                     Box(
                                         modifier = Modifier.width(this@BoxWithConstraints.maxWidth)
                                             .height(this@BoxWithConstraints.maxHeight)
-                                            .padding(start = 15.dp, end = 15.dp, bottom = 15.dp)
+                                            .padding(start = 15.dp.platformScaled(), end = 15.dp.platformScaled(), bottom = 15.dp.platformScaled())
                                     ) {
                                         Column(
                                             horizontalAlignment = Alignment.CenterHorizontally,

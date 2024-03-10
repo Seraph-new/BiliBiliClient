@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import lrk.application.bilibili.client.Platform.Companion.platformScaled
 import lrk.application.bilibili.client.api.BilibiliApi
 import lrk.application.bilibili.client.api.getRecommendVideo
 import lrk.application.bilibili.client.core.APP_GLOBAL_EVENT_THREAD_POOL
@@ -42,10 +43,10 @@ fun HomePage() {
     ) {
         LazyVerticalGrid(
             state = rememberLazyGridState(),
-            columns = GridCells.Adaptive(330.dp),
-            verticalArrangement = Arrangement.spacedBy(5.dp),
-            horizontalArrangement = Arrangement.spacedBy(5.dp),
-            modifier = Modifier.padding(top = 3.dp, start = 3.dp, end = 3.dp)
+            columns = GridCells.Adaptive(330.dp.platformScaled()),
+            verticalArrangement = Arrangement.spacedBy(5.dp.platformScaled()),
+            horizontalArrangement = Arrangement.spacedBy(5.dp.platformScaled()),
+            modifier = Modifier.padding(top = 3.dp.platformScaled(), start = 3.dp.platformScaled(), end = 3.dp.platformScaled())
         ) {
             items(AppState.RecommendVideoPoolState.recommendVideoPoolSize.value, key = { it }) {
                 VideoInfoBlock(

@@ -18,7 +18,7 @@ fun LogInfoBlock() {
         items(AppState.LogState.logEntries.value) {
             Text(
                 modifier = Modifier.fillMaxWidth(),
-                // TODO: unknown reason for exception, just catch it to keep application alive
+                // unknown reason for exception, just catch it to keep application alive
                 text = try {
                     AppState.LogState.logQueue[it].replace("\t", "  ")
                 } catch (e: Exception) {
