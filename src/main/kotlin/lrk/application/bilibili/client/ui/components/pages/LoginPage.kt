@@ -51,7 +51,7 @@ fun LoginPage(loginStatus: MutableState<Boolean>) {
                 verticalArrangement = Arrangement.Center,
             ) {
                 Spacer(modifier = Modifier.height(10.dp.platformScaled()))
-                Text(text = "Login", fontWeight = FontWeight.Bold, fontSize = TextUnit(20f, TextUnitType.Sp))
+                Text(text = "Login", fontWeight = FontWeight.Bold, fontSize = TextUnit(20f, TextUnitType.Sp).platformScaled())
                 Spacer(modifier = Modifier.height(10.dp.platformScaled()))
                 QRCodeWaitForScan(url, text, 200)
             }

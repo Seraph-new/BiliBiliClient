@@ -59,7 +59,7 @@ fun UserInfoBlock(width: Dp = 250.dp, height: Dp = 100.dp) {
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Start
                 ) {
-                    Text(text = uname, fontSize = TextUnit(17F, TextUnitType.Sp))
+                    Text(text = uname, fontSize = TextUnit(17F, TextUnitType.Sp).platformScaled())
                     Spacer(modifier = Modifier.width(8.dp))
                     Image(
                         modifier = Modifier.height(20.dp),
@@ -72,17 +72,17 @@ fun UserInfoBlock(width: Dp = 250.dp, height: Dp = 100.dp) {
                     Text(
                         modifier = Modifier.border(1.dp, Color.Black).padding(1.dp),
                         text = answerStatus,
-                        fontSize = TextUnit(10F, TextUnitType.Sp)
+                        fontSize = TextUnit(10F, TextUnitType.Sp).platformScaled()
                     )
                 }
                 Spacer(modifier = Modifier.height(5.dp))
                 Row(horizontalArrangement = Arrangement.Start) {
                     Text(
                         text = "B币: ${String.format("%.1f", bcoin_balance.toFloat())}",
-                        fontSize = TextUnit(12F, TextUnitType.Sp)
+                        fontSize = TextUnit(12F, TextUnitType.Sp).platformScaled()
                     )
                     Spacer(modifier = Modifier.width(5.dp))
-                    Text(text = "硬币: $money", fontSize = TextUnit(12F, TextUnitType.Sp))
+                    Text(text = "硬币: $money", fontSize = TextUnit(12F, TextUnitType.Sp).platformScaled())
                 }
             }
         }

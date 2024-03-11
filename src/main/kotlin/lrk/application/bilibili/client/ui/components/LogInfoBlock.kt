@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
+import lrk.application.bilibili.client.Platform.Companion.platformScaled
 import lrk.application.bilibili.client.core.AppState
 import lrk.application.bilibili.client.core.log.logE
 
@@ -25,7 +26,7 @@ fun LogInfoBlock() {
                     e.message?.let { it1 -> logE(it1) }
                     ""
                 },
-                fontSize = TextUnit(12F, TextUnitType.Sp)
+                fontSize = TextUnit(12F, TextUnitType.Sp).platformScaled()
             )
         }
     }

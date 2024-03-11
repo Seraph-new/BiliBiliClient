@@ -1,6 +1,8 @@
 package lrk.application.bilibili.client
 
+import androidx.compose.material.Text
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import lrk.application.bilibili.client.core.AppConfig
 import java.io.File
 import java.nio.charset.Charset
@@ -53,6 +55,12 @@ enum class Platform {
             }
         }
 
-        // TODO: add platform scaled font size
+        fun TextUnit.platformScaled(): TextUnit {
+            return if (getPlatform() == UnixLike) {
+                return TextUnit(this.value * 1.5f, this.type)
+            } else {
+                this
+            }
+        }
     }
 }

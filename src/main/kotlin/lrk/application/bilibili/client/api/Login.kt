@@ -81,7 +81,8 @@ object Login {
         response.close()
         return result
     }
-
+    
+    // TODO: remove refreshCookie function
     fun refreshCookie(): Boolean{
         val request = makeGetRequestWithCookie(makeGetURL(BilibiliApi.API_COOKIE_REFRESH_CHECK_URL, "csrf" to getCookie("passport.bilibili.com", "bili_jct")))
         val response = client.newCall(request).execute()

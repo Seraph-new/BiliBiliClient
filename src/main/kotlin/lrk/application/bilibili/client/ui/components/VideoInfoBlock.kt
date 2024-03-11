@@ -68,7 +68,7 @@ fun VideoInfoBlock(modifier: Modifier = Modifier, videoInfoObj: RecommendVideoIn
                 Text(
                     modifier = Modifier.fillMaxWidth().padding(end = 2.dp),
                     text = videoInfoObj.title,
-                    fontSize = TextUnit(15F, TextUnitType.Sp),
+                    fontSize = TextUnit(15F, TextUnitType.Sp).platformScaled(),
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
                     fontWeight = FontWeight.Bold
@@ -81,18 +81,18 @@ fun VideoInfoBlock(modifier: Modifier = Modifier, videoInfoObj: RecommendVideoIn
                 ) {
                     Text(
                         text = "UP: ${videoInfoObj.owner.name}",
-                        fontSize = TextUnit(8F, TextUnitType.Sp),
+                        fontSize = TextUnit(8F, TextUnitType.Sp).platformScaled(),
                         color = Color.Gray
                     )
                     Spacer(modifier = Modifier.height(5.dp))
                     Text(
                         text = "时长: ${formatDuration(videoInfoObj.duration)}",
-                        fontSize = TextUnit(10F, TextUnitType.Sp)
+                        fontSize = TextUnit(10F, TextUnitType.Sp).platformScaled()
                     )
                     Spacer(modifier = Modifier.height(5.dp))
                     Text(
                         text = "${videoInfoObj.stat.view}播放 ${videoInfoObj.stat.like}点赞 ${videoInfoObj.stat.danmaku}弹幕",
-                        fontSize = TextUnit(10F, TextUnitType.Sp)
+                        fontSize = TextUnit(10F, TextUnitType.Sp).platformScaled()
                     )
                 }
             }
