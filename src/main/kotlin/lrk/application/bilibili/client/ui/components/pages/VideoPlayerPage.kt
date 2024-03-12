@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.navigator.LocalNavigator
-import com.example.compose.AppTheme
+import lrk.application.bilibili.client.ui.theme.AppTheme
 import kotlinx.coroutines.delay
 import lrk.application.bilibili.client.core.AppState
 import lrk.application.bilibili.client.core.obj.RecommendVideoInfoObj

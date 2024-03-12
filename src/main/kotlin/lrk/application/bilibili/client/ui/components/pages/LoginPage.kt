@@ -10,7 +10,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
-import com.example.compose.AppTheme
+import lrk.application.bilibili.client.ui.theme.AppTheme
 import lrk.application.bilibili.client.Platform.Companion.platformScaled
 import lrk.application.bilibili.client.api.Login
 import lrk.application.bilibili.client.core.AppState

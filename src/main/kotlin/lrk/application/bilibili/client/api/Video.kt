@@ -2,8 +2,10 @@ package lrk.application.bilibili.client.api
 
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
-import lrk.application.bilibili.client.core.*
-import lrk.application.bilibili.client.core.log.logD
+import lrk.application.bilibili.client.core.Client
+import lrk.application.bilibili.client.core.getCookie
+import lrk.application.bilibili.client.core.makeGetRequestWithCookie
+import lrk.application.bilibili.client.core.makeGetURL
 import lrk.application.bilibili.client.core.obj.RecommendVideoInfoObj
 import okhttp3.Request
 
@@ -22,7 +24,6 @@ fun BilibiliApi.getRecommendVideo(): ArrayList<RecommendVideoInfoObj> {
             val item = responseJsonObject.get("data").asJsonObject.get("item").asJsonArray
             item.forEach {
                 val obj = RecommendVideoInfoObj.getInstance(it.asJsonObject)
-                logD("Video: $obj")
                 result.add(obj)
             }
         }

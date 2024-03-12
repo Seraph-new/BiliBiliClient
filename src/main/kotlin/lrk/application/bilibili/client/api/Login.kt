@@ -81,31 +81,4 @@ object Login {
         response.close()
         return result
     }
-    
-    // TODO: remove refreshCookie function
-    fun refreshCookie(): Boolean{
-        val request = makeGetRequestWithCookie(makeGetURL(BilibiliApi.API_COOKIE_REFRESH_CHECK_URL, "csrf" to getCookie("passport.bilibili.com", "bili_jct")))
-        val response = client.newCall(request).execute()
-        val result = when (response.isSuccessful) {
-            true -> {
-                val responseJsonObject: JsonObject = JsonParser.parseString(response.body.string()).asJsonObject
-                if (responseJsonObject.get("code").asInt != 0) { // not login
-                    AppState.LoginState.shouldReLogin.value  = true
-                    return false
-                } else {
-                    val refresh = responseJsonObject.get("data").asJsonObject.get("refresh").asBoolean
-                    val timestamp = responseJsonObject.get("data").asJsonObject.get("timestamp").asLong
-                    if (refresh){
-                        val refreshResponse = client.newCall(makeGetRequestWithCookie("https://www.bilibili.com/correspond/1/" + Algorithm.correspondPath(timestamp))).execute()
-//                         TODO("need localStorage")
-                    }
-                    true
-                }
-            }
-
-            false -> false
-        }
-//        response.close()
-        return result
-    }
 }

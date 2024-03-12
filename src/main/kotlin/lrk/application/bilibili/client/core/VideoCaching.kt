@@ -47,15 +47,15 @@ fun startVideoCachingProcess(bvid: String, cid: Int, qn: Int) {
 
         try {
             while (!Thread.currentThread().isInterrupted) {
-                val len = sourceStream.read(buffer) // 可以无视此行触发的异常
+                val len = sourceStream.read(buffer) // "stream closed" exception will be ignored
                 if (len != -1 && !Thread.currentThread().isInterrupted) {
                     targetStream.write(buffer, 0, len)
                 } else {
                     break
                 }
             }
-        } catch (e: Exception) {
-            e.printStackTrace()
+        } catch (_: Exception) {
+
         }
 
         targetStream.close()
