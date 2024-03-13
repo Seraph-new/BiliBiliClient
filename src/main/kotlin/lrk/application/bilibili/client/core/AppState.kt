@@ -16,7 +16,7 @@ object AppState {
         var logEntries: MutableState<Int> = mutableStateOf(0)
     }
     object RecommendVideoPoolState{
-        val recommendVideoPool: LinkedHashSet<RecommendVideoInfoObj> = LinkedHashSet()
+        val recommendVideoPool: LinkedHashSet<RecommendVideoInfoObj> = LinkedHashSet() // TODO: optimize data structure
         var recommendVideoPoolSize: MutableState<Int> = mutableStateOf(0)
         var currentScrollIndex: MutableState<Int> = mutableStateOf(0)
     }

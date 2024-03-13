@@ -10,7 +10,7 @@ import androidx.compose.ui.unit.dp
 import lrk.application.bilibili.client.Platform.Companion.platformScaled
 
 @Composable
-fun DrawerContent() {
+fun HomePageDrawerContent() {
     val userInfoColumnWidth = 400.dp
     MaterialTheme {
         BoxWithConstraints {

@@ -20,8 +20,8 @@ import lrk.application.bilibili.client.core.APP_GLOBAL_EVENT_THREAD_POOL
 import lrk.application.bilibili.client.core.APP_GLOBAL_NETWORK_THREAD_POOL
 import lrk.application.bilibili.client.core.AppState
 import lrk.application.bilibili.client.core.obj.RecommendVideoInfoObj
-import lrk.application.bilibili.client.ui.components.BottomBar
-import lrk.application.bilibili.client.ui.components.DrawerContent
+import lrk.application.bilibili.client.ui.components.HomePageBottomBar
+import lrk.application.bilibili.client.ui.components.HomePageDrawerContent
 import lrk.application.bilibili.client.ui.components.HomePageTopBar
 import lrk.application.bilibili.client.ui.components.VideoInfoBlock
 
@@ -32,13 +32,13 @@ fun HomePage() {
     Scaffold(
         scaffoldState = scaffoldState,
         topBar = {
-            HomePageTopBar(drawerState = drawerState)
+            HomePageTopBar(drawerState = drawerState, height = 50.dp)
         },
         bottomBar = {
-            BottomBar()
+            HomePageBottomBar(height = 50.dp)
         },
         drawerContent = {
-            DrawerContent()
+            HomePageDrawerContent()
         }
     ) {
         LazyVerticalGrid(
@@ -51,7 +51,7 @@ fun HomePage() {
             items(AppState.RecommendVideoPoolState.recommendVideoPoolSize.value, key = { it }) {
                 VideoInfoBlock(
                     modifier = Modifier,
-                    AppState.RecommendVideoPoolState.recommendVideoPool.toArray()[it] as RecommendVideoInfoObj, // 可能有性能问题
+                    AppState.RecommendVideoPoolState.recommendVideoPool.toArray()[it] as RecommendVideoInfoObj,
                     it
                 )
             }
