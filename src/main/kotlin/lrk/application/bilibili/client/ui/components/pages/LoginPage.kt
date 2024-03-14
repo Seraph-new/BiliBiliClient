@@ -58,13 +58,18 @@ fun LoginPage(loginStatus: MutableState<Boolean>) {
             LaunchedEffect(Unit) {
                 QRCodeLoginTimer.start(text, loginStatus)
             }
+            DisposableEffect(Unit){
+                onDispose {
+                    QRCodeLoginTimer.timer.cancel()
+                }
+            }
         }
     }
 }
 
 object QRCodeLoginTimer {
+    val timer = Timer("QRCodeLoginTimer", true)
     fun start(text: MutableState<String>, loginStatus: MutableState<Boolean>) {
-        val timer = Timer("QRCodeLoginTimer", true)
         timer.schedule(object : TimerTask() {
             override fun run() {
                 val response = Login.checkQRCodeScanState(AppState.LoginState.qrcodeKey)

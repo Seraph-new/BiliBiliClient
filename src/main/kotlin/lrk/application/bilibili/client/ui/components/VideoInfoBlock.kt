@@ -38,7 +38,10 @@ fun VideoInfoBlock(modifier: Modifier = Modifier, videoInfoObj: RecommendVideoIn
     var videoPic by remember {
         mutableStateOf(PictureTools.getEmptyImageBitmap(250, 200))
     }
-    Surface(shape = RoundedCornerShape(15.dp), modifier = modifier.width(320.dp.platformScaled()).height(100.dp.platformScaled()).clickable {
+    Surface(
+        shape = RoundedCornerShape(15.dp),
+        elevation = 5.dp,
+        modifier = modifier.width(320.dp.platformScaled()).height(100.dp.platformScaled()).clickable {
         logI("VideoInfoBlock was clicked: ${videoInfoObj.title}, ${videoInfoObj.bvid}")
         startVideoCachingProcess(videoInfoObj.bvid, videoInfoObj.cid, 112)
         navigator.push(
