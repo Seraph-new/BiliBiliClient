@@ -26,7 +26,7 @@ import lrk.application.bilibili.client.api.getPicture
 import lrk.application.bilibili.client.core.APP_GLOBAL_NETWORK_THREAD_POOL
 import lrk.application.bilibili.client.core.AppConfig
 import lrk.application.bilibili.client.core.AppState
-import lrk.application.bilibili.client.core.log.logI
+import lrk.application.bilibili.client.core.log.Log
 import lrk.application.bilibili.client.core.obj.RecommendVideoInfoObj
 import lrk.application.bilibili.client.core.startVideoCachingProcess
 import lrk.application.bilibili.client.ui.navigation.VideoPlayerScreen
@@ -42,7 +42,7 @@ fun VideoInfoBlock(modifier: Modifier = Modifier, videoInfoObj: RecommendVideoIn
         shape = RoundedCornerShape(15.dp),
         elevation = 5.dp,
         modifier = modifier.width(320.dp.platformScaled()).height(100.dp.platformScaled()).clickable {
-        logI("VideoInfoBlock was clicked: ${videoInfoObj.title}, ${videoInfoObj.bvid}")
+        Log.i("VideoInfoBlock was clicked: ${videoInfoObj.title}, ${videoInfoObj.bvid}")
         startVideoCachingProcess(videoInfoObj.bvid, videoInfoObj.cid, 112)
         navigator.push(
             VideoPlayerScreen(

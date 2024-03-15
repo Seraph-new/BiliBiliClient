@@ -2,7 +2,7 @@ package lrk.application.bilibili.client.core
 
 import com.google.gson.Gson
 import lrk.application.bilibili.client.Platform
-import lrk.application.bilibili.client.core.log.logI
+import lrk.application.bilibili.client.core.log.Log
 import java.awt.Dimension
 import java.awt.GridLayout
 import java.awt.Toolkit
@@ -98,7 +98,7 @@ object Initialize {
         if (Platform.getPlatform() == Platform.Windows) {
             val libVlcDir = File(Platform.getPlatformDataDir().path + File.separator + "libvlc")
             if (libVlcDir.exists() && (libVlcDir.listFiles()?.size ?: 0) != 0) return
-            logI("Deploying VLC on Windows")
+            Log.i("Deploying VLC on Windows")
             if (!libVlcDir.exists() || libVlcDir.isFile) {
                 libVlcDir.delete()
                 libVlcDir.mkdirs()

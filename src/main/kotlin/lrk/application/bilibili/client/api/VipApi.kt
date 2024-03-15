@@ -4,7 +4,7 @@ import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import lrk.application.bilibili.client.core.Client
 import lrk.application.bilibili.client.core.getCookie
-import lrk.application.bilibili.client.core.log.logI
+import lrk.application.bilibili.client.core.log.Log
 import lrk.application.bilibili.client.core.makePostRequestWithCookie
 import okhttp3.FormBody
 
@@ -19,7 +19,7 @@ fun BilibiliApi.vipSignIn(): Boolean {
             if (code == 0) {
                 true
             } else {
-                logI(responseJsonObject.get("message").asString)
+                Log.i(responseJsonObject.get("message").asString)
                 false
             }
         }

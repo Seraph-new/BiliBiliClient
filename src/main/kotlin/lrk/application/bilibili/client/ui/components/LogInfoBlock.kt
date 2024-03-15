@@ -11,7 +11,7 @@ import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import lrk.application.bilibili.client.Platform.Companion.platformScaled
 import lrk.application.bilibili.client.core.AppState
-import lrk.application.bilibili.client.core.log.logE
+import lrk.application.bilibili.client.core.log.Log
 
 @Composable
 fun LogInfoBlock() {
@@ -23,7 +23,7 @@ fun LogInfoBlock() {
                 text = try {
                     AppState.LogState.logQueue[it].replace("\t", "  ")
                 } catch (e: Exception) {
-                    e.message?.let { it1 -> logE(it1) }
+                    e.message?.let { it1 -> Log.e(it1) }
                     ""
                 },
                 fontSize = TextUnit(12F, TextUnitType.Sp).platformScaled()

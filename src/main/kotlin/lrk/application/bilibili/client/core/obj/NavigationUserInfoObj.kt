@@ -1,7 +1,7 @@
 package lrk.application.bilibili.client.core.obj
 
 import com.google.gson.JsonObject
-import lrk.application.bilibili.client.core.log.logE
+import lrk.application.bilibili.client.core.log.Log
 
 @Suppress("unused")
 data class NavigationUserInfoObj(
@@ -161,7 +161,7 @@ data class NavigationUserInfoObj(
                     is_jury,
                 )
             } catch (e: Exception) {
-                logE("${this::class.java}: ${e.message}")
+                Log.e("${this::class.java}: ${e.message}")
                 return null
             }
         }

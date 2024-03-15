@@ -11,7 +11,6 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.DisposableEffectResult
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -21,7 +20,7 @@ import lrk.application.bilibili.client.api.getRecommendVideo
 import lrk.application.bilibili.client.core.APP_GLOBAL_EVENT_THREAD_POOL
 import lrk.application.bilibili.client.core.APP_GLOBAL_NETWORK_THREAD_POOL
 import lrk.application.bilibili.client.core.AppState
-import lrk.application.bilibili.client.core.log.logD
+import lrk.application.bilibili.client.core.log.Log
 import lrk.application.bilibili.client.core.obj.RecommendVideoInfoObj
 import lrk.application.bilibili.client.ui.components.HomePageBottomBar
 import lrk.application.bilibili.client.ui.components.HomePageDrawerContent
@@ -74,7 +73,7 @@ fun HomePage() {
                 }
                 Thread.sleep(500)
             }
-            logD("Recommend video refreshing daemon thread interrupted")
+            Log.d("Recommend video refreshing daemon thread interrupted")
         }
         daemonThread?.let { APP_GLOBAL_EVENT_THREAD_POOL.execute(it) }
     }

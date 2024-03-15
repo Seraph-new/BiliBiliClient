@@ -1,6 +1,6 @@
 package lrk.application.bilibili.client.core
 
-import lrk.application.bilibili.client.core.log.logD
+import lrk.application.bilibili.client.core.log.Log
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
 import java.security.KeyFactory
@@ -107,7 +107,7 @@ object Algorithm {
         val s = result.toString() + mixinKey
         val wbiSign: String = generateMD5(s)
         val finalParam = "$result&w_rid=$wbiSign".replace("+", "%20")
-        logD("WBI: $finalParam")
+        Log.d("WBI: $finalParam")
         return finalParam
     }
 

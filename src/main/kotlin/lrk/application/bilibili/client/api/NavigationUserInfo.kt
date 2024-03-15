@@ -4,12 +4,12 @@ import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import lrk.application.bilibili.client.core.AppState
 import lrk.application.bilibili.client.core.Client
-import lrk.application.bilibili.client.core.log.logD
+import lrk.application.bilibili.client.core.log.Log
 import lrk.application.bilibili.client.core.makeGetRequestWithCookie
 import lrk.application.bilibili.client.core.obj.NavigationUserInfoObj
 
 fun BilibiliApi.getNavigationUserInfo(): NavigationUserInfoObj? {
-    logD("NavigationUserInfo::getNavigationUserInfo invoked")
+    Log.d("NavigationUserInfo::getNavigationUserInfo invoked")
     val request = makeGetRequestWithCookie(API_USER_INFORMATION_URL)
     val response = Client.getClient().newCall(request).execute()
     val result = when (response.isSuccessful) {

@@ -3,7 +3,7 @@ package lrk.application.bilibili.client.core
 import com.google.gson.JsonParser
 import lrk.application.bilibili.client.api.BilibiliApi
 import lrk.application.bilibili.client.api.getVideoURL
-import lrk.application.bilibili.client.core.log.logD
+import lrk.application.bilibili.client.core.log.Log
 import java.io.FileOutputStream
 
 
@@ -43,7 +43,7 @@ fun startVideoCachingProcess(bvid: String, cid: Int, qn: Int) {
         val targetStream = FileOutputStream(AppConfig.APP_VIDEO_CACHE_FILE)
         val buffer = ByteArray(1024)
 
-        logD("Video Caching Process Started")
+        Log.d("Video Caching Process Started")
 
         try {
             while (!Thread.currentThread().isInterrupted) {
@@ -62,7 +62,7 @@ fun startVideoCachingProcess(bvid: String, cid: Int, qn: Int) {
         sourceStream.close()
         response.close()
 
-        logD("Video Caching Process End")
+        Log.d("Video Caching Process End")
     }
 }
 
