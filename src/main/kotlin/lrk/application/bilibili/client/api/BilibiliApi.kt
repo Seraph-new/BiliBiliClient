@@ -8,8 +8,11 @@ object BilibiliApi {
     // get the qrcode scan state
     const val API_QRCODE_CHECK_URL = "https://passport.bilibili.com/x/passport-login/web/qrcode/poll"
 
-    // gat user information
-    const val API_USER_INFORMATION_URL = "https://api.bilibili.com/x/web-interface/nav"
+    // gat navigation user information
+    const val API_USER_NAVIGATION_INFORMATION_URL = "https://api.bilibili.com/x/web-interface/nav"
+
+    // get user space information
+    const val API_USER_SPACE_INFORMATION_URL = "https://api.bilibili.com/x/space/wbi/acc/info"
 
     // check if the cookie should to be refreshed
     const val API_COOKIE_REFRESH_CHECK_URL = "https://passport.bilibili.com/x/passport-login/web/cookie/info"

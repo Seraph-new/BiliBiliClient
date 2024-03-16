@@ -15,9 +15,7 @@ Build it with ./gradlew
 Then you can found AppImage in directory build/compose/binaries/main/app/ <br>
 Or just use `./gradlew run` to build and run this program <br>
 ## About VideoPlayer
-This project is using experimental VideoPlayer component from [JetBrains Compose Multiplatform](https://www.jetbrains.com/zh-cn/lp/compose-multiplatform/) <br>
-It can be found at <https://github.com/JetBrains/compose-multiplatform/tree/master/experimental/components> <br>
-<br>
-But it has some problem because it use vlcj in SwingPanel: [Issue 1521](https://github.com/JetBrains/compose-multiplatform/issues/1521), [Issue 2926](https://github.com/JetBrains/compose-multiplatform/issues/2926) <br>
-<br>
-So this project is trying to rewrite a new VideoPlayer with gstreamer <br>
+This project is using experimental VideoPlayer component from [JetBrains Compose Multiplatform](https://www.jetbrains.com/zh-cn/lp/compose-multiplatform/). <br>
+It can be found at [here](https://github.com/JetBrains/compose-multiplatform/tree/master/experimental/components). <br>
+But it has some problem because it use vlcj in SwingPanel: [Issue 1521](https://github.com/JetBrains/compose-multiplatform/issues/1521), [Issue 2926](https://github.com/JetBrains/compose-multiplatform/issues/2926). <br>
+So this project is trying to rewrite a new VideoPlayer with gstreamer. <br>

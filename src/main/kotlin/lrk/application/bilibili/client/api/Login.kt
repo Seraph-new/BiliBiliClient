@@ -69,7 +69,7 @@ object Login {
     }
 
     fun checkIsLogin(): Boolean{
-        val request = makeGetRequestWithCookie(BilibiliApi.API_USER_INFORMATION_URL)
+        val request = makeGetRequestWithCookie(BilibiliApi.API_USER_NAVIGATION_INFORMATION_URL)
         val response = client.newCall(request).execute()
         val result = when (response.isSuccessful) {
             true -> {

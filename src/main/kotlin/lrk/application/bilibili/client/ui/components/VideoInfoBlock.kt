@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
@@ -33,7 +34,7 @@ import lrk.application.bilibili.client.ui.navigation.VideoPlayerScreen
 import java.lang.Integer.max
 
 @Composable
-fun VideoInfoBlock(modifier: Modifier = Modifier, videoInfoObj: RecommendVideoInfoObj, id: Int) {
+fun VideoInfoBlock(width: Dp = 320.dp, height: Dp = 100.dp, modifier: Modifier = Modifier, videoInfoObj: RecommendVideoInfoObj, id: Int) {
     val navigator = LocalNavigator.currentOrThrow
     var videoPic by remember {
         mutableStateOf(PictureTools.getEmptyImageBitmap(250, 200))
@@ -41,7 +42,7 @@ fun VideoInfoBlock(modifier: Modifier = Modifier, videoInfoObj: RecommendVideoIn
     Surface(
         shape = RoundedCornerShape(15.dp),
         elevation = 5.dp,
-        modifier = modifier.width(320.dp.platformScaled()).height(100.dp.platformScaled()).clickable {
+        modifier = modifier.width(width.platformScaled()).height(height.platformScaled()).clickable {
         Log.i("VideoInfoBlock was clicked: ${videoInfoObj.title}, ${videoInfoObj.bvid}")
         startVideoCachingProcess(videoInfoObj.bvid, videoInfoObj.cid, 112)
         navigator.push(

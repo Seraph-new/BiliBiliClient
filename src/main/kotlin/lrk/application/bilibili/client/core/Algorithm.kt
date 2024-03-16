@@ -107,7 +107,7 @@ object Algorithm {
         val s = result.toString() + mixinKey
         val wbiSign: String = generateMD5(s)
         val finalParam = "$result&w_rid=$wbiSign".replace("+", "%20")
-        Log.d("WBI: $finalParam")
+        Log.d("WBI signed: $finalParam")
         return finalParam
     }
 
