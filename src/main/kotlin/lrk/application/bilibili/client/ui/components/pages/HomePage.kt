@@ -61,7 +61,7 @@ fun HomePage() {
             items(AppState.RecommendVideoPoolState.recommendVideoPoolSize.value, key = { it }) {
                 VideoInfoBlock(
                     modifier = Modifier,
-                    videoInfoObj = AppState.RecommendVideoPoolState.recommendVideoPool.toArray()[it] as RecommendVideoInfoObj,
+                    videoInfoObj = AppState.RecommendVideoPoolState.recommendVideoPool[it] as RecommendVideoInfoObj,
                     id = it
                 )
             }

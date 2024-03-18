@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import lrk.application.bilibili.client.core.obj.RecommendVideoInfoObj
 import java.io.InputStream
 import java.util.*
+import kotlin.collections.HashMap
 
 object AppState {
     object LoginState {
@@ -16,7 +17,7 @@ object AppState {
         var logEntries: MutableState<Int> = mutableStateOf(0)
     }
     object RecommendVideoPoolState{
-        val recommendVideoPool: LinkedHashSet<RecommendVideoInfoObj> = LinkedHashSet() // TODO: optimize data structure
+        val recommendVideoPool: RecommendVideoPool = RecommendVideoPool()
         var recommendVideoPoolSize: MutableState<Int> = mutableStateOf(0)
         var currentScrollIndex: MutableState<Int> = mutableStateOf(0)
     }
@@ -28,4 +29,24 @@ object AppState {
     object MediaPlayerState{
         var mediaPlayer: Any? = null
     }
+}
+
+class RecommendVideoPool{
+    private val map = HashMap<Int, RecommendVideoInfoObj>()
+    private var currentIndex = 0
+    val size: Int
+        get() = map.size
+
+    private fun add(value: RecommendVideoInfoObj){
+        map[currentIndex++] = value
+    }
+
+    fun addAll(values: Collection<RecommendVideoInfoObj>){
+        values.forEach(::add)
+    }
+
+    operator fun get(index: Int): RecommendVideoInfoObj?{
+        return map[index]
+    }
+
 }
