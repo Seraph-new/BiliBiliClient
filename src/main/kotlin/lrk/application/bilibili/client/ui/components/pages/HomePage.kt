@@ -19,12 +19,10 @@ import lrk.application.bilibili.client.api.BilibiliApi
 import lrk.application.bilibili.client.api.getRecommendVideo
 import lrk.application.bilibili.client.core.APP_GLOBAL_EVENT_THREAD_POOL
 import lrk.application.bilibili.client.core.APP_GLOBAL_NETWORK_THREAD_POOL
-import lrk.application.bilibili.client.core.AppConfig
 import lrk.application.bilibili.client.core.AppState
 import lrk.application.bilibili.client.core.log.Log
 import lrk.application.bilibili.client.core.obj.RecommendVideoInfoObj
 import lrk.application.bilibili.client.ui.components.BottomBar
-import lrk.application.bilibili.client.ui.components.HomePageDrawerContent
 import lrk.application.bilibili.client.ui.components.HomePageTopBar
 import lrk.application.bilibili.client.ui.components.VideoInfoBlock
 
@@ -36,16 +34,11 @@ fun HomePage() {
     Scaffold(
         scaffoldState = scaffoldState,
         topBar = {
-            HomePageTopBar(drawerState = drawerState, height = 50.dp)
+            HomePageTopBar(height = 50.dp)
         },
         bottomBar = {
             BottomBar(height = 50.dp)
         },
-        drawerContent = if (AppConfig.DEBUG) {
-            { HomePageDrawerContent() }
-        } else {
-            null
-        }
     ) {
         LazyVerticalGrid(
             state = rememberLazyGridState(),

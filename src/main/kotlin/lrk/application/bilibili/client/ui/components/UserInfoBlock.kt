@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.dp
 import lrk.application.bilibili.client.Platform.Companion.platformScaled
 import lrk.application.bilibili.client.api.*
+import lrk.application.bilibili.client.core.APP_GLOBAL_NETWORK_THREAD_POOL
 import lrk.application.bilibili.client.core.obj.NavigationUserInfoObj
 
 @Composable
@@ -88,22 +89,24 @@ fun UserInfoBlock(width: Dp = 250.dp, height: Dp = 100.dp) {
         }
     }
     LaunchedEffect(Unit) {
-        val userinfo = BilibiliApi.getNavigationUserInfo()!!
-        BilibiliApi.getPicture(userinfo.face)?.let { face = it }
-        BilibiliApi.getPicture(userinfo.pendant.image)?.let { pendant = it }
-        uname = userinfo.uname
-        answerStatus = if (userinfo.answer_status == 0) "正式会员" else "未答题"
-        bcoin_balance = userinfo.wallet.bcoin_balance
-        money = userinfo.money
-        levelImagePath = when (userinfo.level_info.current_level) {
-            6 -> {
-                if (userinfo.is_senior_member == NavigationUserInfoObj.SeniorMemberStatus.YES)
-                    "assets/level-images/lv6s.png"
-                else
-                    "assets/level-images/lv6.png"
-            }
-            else -> {
-                "assets/level-images/lv${userinfo.level_info.current_level}.png"
+        APP_GLOBAL_NETWORK_THREAD_POOL.execute{
+            val userinfo = BilibiliApi.getNavigationUserInfo()!!
+            BilibiliApi.getPicture(userinfo.face)?.let { face = it }
+            BilibiliApi.getPicture(userinfo.pendant.image)?.let { pendant = it }
+            uname = userinfo.uname
+            answerStatus = if (userinfo.answer_status == 0) "正式会员" else "未答题"
+            bcoin_balance = userinfo.wallet.bcoin_balance
+            money = userinfo.money
+            levelImagePath = when (userinfo.level_info.current_level) {
+                6 -> {
+                    if (userinfo.is_senior_member == NavigationUserInfoObj.SeniorMemberStatus.YES)
+                        "assets/level-images/lv6s.png"
+                    else
+                        "assets/level-images/lv6.png"
+                }
+                else -> {
+                    "assets/level-images/lv${userinfo.level_info.current_level}.png"
+                }
             }
         }
     }

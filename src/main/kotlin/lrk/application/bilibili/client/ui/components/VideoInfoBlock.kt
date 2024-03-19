@@ -4,8 +4,9 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -40,8 +41,9 @@ fun VideoInfoBlock(width: Dp = 320.dp, height: Dp = 100.dp, modifier: Modifier =
         mutableStateOf(PictureTools.getEmptyImageBitmap(250, 200))
     }
     Surface(
+        color = MaterialTheme.colorScheme.onPrimary,
         shape = RoundedCornerShape(15.dp),
-        elevation = 5.dp,
+        tonalElevation = 5.dp,
         modifier = modifier.width(width.platformScaled()).height(height.platformScaled()).clickable {
         Log.i("VideoInfoBlock was clicked: ${videoInfoObj.title}, ${videoInfoObj.bvid}")
         startVideoCachingProcess(videoInfoObj.bvid, videoInfoObj.cid, 112)
